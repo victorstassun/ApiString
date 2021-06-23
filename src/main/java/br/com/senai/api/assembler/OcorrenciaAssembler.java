@@ -1,6 +1,6 @@
 package br.com.senai.api.assembler;
 
-import br.com.senai.api.model.OcorrenciaModel;
+import br.com.senai.api.model.OcorrenciaDTO;
 import br.com.senai.domain.model.Ocorrencia;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 public class OcorrenciaAssembler {
 
     private ModelMapper modelMapper;
-    public OcorrenciaModel toModel(Ocorrencia ocorrencia) {
-        return modelMapper.map(ocorrencia, OcorrenciaModel.class);
+    public OcorrenciaDTO toModel(Ocorrencia ocorrencia) {
+        return modelMapper.map(ocorrencia, OcorrenciaDTO.class);
     }
 
-    public List<OcorrenciaModel> toCollectionModel(List<Ocorrencia> ocorrencia){
+    public List<OcorrenciaDTO> toCollectionModel(List<Ocorrencia> ocorrencia){
         return ocorrencia.stream()
                 .map(this::toModel)
                 .collect(Collectors.toList());

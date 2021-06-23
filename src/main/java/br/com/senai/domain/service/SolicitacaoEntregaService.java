@@ -1,7 +1,7 @@
 package br.com.senai.domain.service;
 
 import br.com.senai.api.assembler.EntregaAssembler;
-import br.com.senai.api.model.EntregaModel;
+import br.com.senai.api.model.EntregaDTO;
 import br.com.senai.domain.model.Entrega;
 import br.com.senai.domain.model.Pessoa;
 import br.com.senai.domain.model.StatusEntrega;
@@ -33,11 +33,11 @@ public class SolicitacaoEntregaService {
 		return entregaRepository.save(entrega);
 	}
 
-	public List<EntregaModel> listar() {
+	public List<EntregaDTO> listar() {
 		return entregaAssembler.toCollectionModel(entregaRepository.findAll());
 	}
 
-	public ResponseEntity<EntregaModel> buscar(Long entregaId) {
+	public ResponseEntity<EntregaDTO> buscar(Long entregaId) {
 		return entregaRepository.findById(entregaId)
 				.map(entrega -> {
 					return ResponseEntity.ok(entregaAssembler.toModel(entrega));
